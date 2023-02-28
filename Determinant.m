@@ -2,37 +2,32 @@
 clear
 close all
 
-%% Matriser
-% Definiera rektangelns sidor som kolumner i matrisen A
-A = [1 0; 
-     0 1];
+%Definera matrisen
+startmatris=[0 2 2 4 4 6 6 8 8 6 6 10 10 6 6 4 4 2 2 0 0 ; % Ser ut som ett H med ett F i sig
+             0 0 4 4 -2 -2 0 0 2 2 4 4 6 6 10 10 6 6 10 10 0 ];
 
-% Definiera avbildningsmatrisen B
-B =  [2 0; 
-      0 1.4];
+%Definera x och y värden
+xpos = startmatris(1,:); %Rad 1 = x värden
+ypos = startmatris(2,:); %Rad 2 = y värden
 
-%% Ekvationer
-% Transformera rektangeln genom att multiplicera A med B
-% Beskriver hur den ursprungliga rektangeln har förändrats 
-AB = A*B;
+%% Determinat genom Skjuvning
+% Definiera hur mycket matrisen ska skjutas i x-led
+a = -0.6;
 
-% Beräkna determinantvärdet för AB
-det_AB = det(AB);
+%Definera avbildnings matrisen
+xs = xpos + ypos * a;
+% ys = ypos;
 
-%% Definera formerna
-% Definiera hörnen för rektangeln som en matris med koordinaterna för hörnen som rader
-fyrkantA = [0 0; A(1,1) 0; A(1,1) A(2,2); 0 A(2,2); 0 0];
+% Area av startmatrisen
+area_startmatris = abs(polyarea(xpos,ypos));
 
-% Definiera hörnen för rektangelB genom att multiplicera hörnen för rektangeln med avbildningsmatrisen AB
-% Detta för vi vet med AB hur den förändras men inte dens lokation, vilket vi får via fyrkantA.
-rektangelB = fyrkantA * AB;
+% Area av avbildningsmatrisen
+area_avbildning = abs(polyarea(xs,ypos));
 
-
-%% Rita fyrkantA och rektangelB i en figur
-figure;
-hold on;
-plot(fyrkantA(:,1), fyrkantA(:,2), 'r'); % Jag tar kolumn 1 för x och kolumn 2 för y värden0
-plot(rektangelB(:,1), rektangelB(:,2), 'b');
+%Plot startmatrisen och avbidlingmatrisen
+figure(1)
+plot(xpos,ypos,'-b',xs,ypos,'-r')
 axis equal;
-title(['Determinant = ' num2str(det_AB)]); % number to string
-legend('FyrkantA', 'RektangelB');
+title(['Area innan = ' num2str(area_startmatris)]);
+subtitle(['Area efter = ' num2str(area_avbildning)]);
+legend('Innan', 'Efter')
