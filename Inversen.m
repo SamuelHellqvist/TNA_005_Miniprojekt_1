@@ -16,7 +16,7 @@ inv_v = inv(rotering); % Inversen av Vektorn v
 w = inv_v * v; % Vekor w = Vektor v  roterad 30 grader medurs
 
 
-vinkel = acosd((v'*w)/(norm(v)*norm(w)));% Räknar ut vinkel mellan två vektorer. För att bevisa att det stämmer
+vinkel = acosd((v'*w)/(norm(v)*norm(w)));% Räknar ut vinkel mellan två vektorer. För bevisa att det stämmer
 %% plot Vektor u, Vektor v
 figure(1)
 hold on;
@@ -25,7 +25,7 @@ plot([0 v(1)], [0 v(2)], 'r-');
 axis equal;
 title('Vektor u, Vektor v')
 subtitle(['Grader mellan vinklarna = ', num2str(theta)])
-legend('Vektor u', ' Vekor v')
+legend('Vektor u', ' Vektor v')
 
 %% plot Vektor v, Vektor w
 figure(2)
@@ -35,4 +35,4 @@ plot([0 w(1)], [0 w(2)], 'g-');
 axis equal;
 title('Vektor v, Vektor w')
 subtitle(['Grader mellan vinklarna = ', num2str(vinkel)])
-legend('Vektor v  ', 'Vekor w =  Vektor u')
+legend('Vektor v  ', 'Vektor w =  Vektor u')
