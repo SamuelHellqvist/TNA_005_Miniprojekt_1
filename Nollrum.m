@@ -1,3 +1,4 @@
+%Nollrum
 clear 
 close  all
 
@@ -7,10 +8,10 @@ v = [3, 3];
 % Skapa speglingsmatrisen
 S = [1 0; 0 -1];
 
-% Projicera vektorn på speglingsmatrisen
+% Projicera vektorn v på speglingsmatrisen
 proj_v = S*v'; %
 
-% Rita ut vektorn och dess projektion
+%% Rita ut vektorn och dess projektion
 figure;
 hold on;
 plot([0, v(1)], [0, v(2)], 'b', 'LineWidth', 2);
@@ -20,3 +21,4 @@ grid on;
 title('Illustration av nollrummet');
 xlabel('x-axel');
 ylabel('y-axel');
+hold off
