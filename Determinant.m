@@ -28,6 +28,6 @@ area_avbildning = abs(polyarea(xs,ypos));
 figure(1)
 plot(xpos,ypos,'-b',xs,ypos,'-r')
 axis equal;
-title(['Area innan = ' num2str(area_startmatris)]);
-subtitle(['Area efter = ' num2str(area_avbildning)]);
+title(['\color{blue}Area innan = ' num2str(area_startmatris)]);
+subtitle(['\color{red}Area efter = ' num2str(area_avbildning)]);
 legend('Innan', 'Efter')
