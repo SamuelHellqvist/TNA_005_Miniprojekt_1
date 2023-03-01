@@ -1,0 +1,40 @@
+% Nollrum
+clear 
+close all
+
+% Skapa vektorn
+v = [1, -1];
+
+% Skapa enhetsvektor som pekar längs linjen med 135 graders vinkel mot x-axeln
+theta = 135;
+u = [cosd(theta), sind(theta)];
+
+% Projicera vektorn v på linjen som pekar längs u
+proj_v = dot(v, u) * u;
+
+%% Rita ut vektorn, dess projektion, linjen och dess normalvektor
+figure(1);
+hold on;
+plot([0, v(1)], [0, v(2)], 'b');
+plot([0, proj_v(1)], [0, proj_v(2)], 'r');
+plot([-1, 1], [-1, 1], 'k');
+quiver(0, 0, 1, -1, 'm', 'MaxHeadSize', 1);
+axis equal;
+grid on;
+title('Illustration av nollrummet');
+xlabel('x-axel');
+ylabel('y-axel');
+legend('Vektor v', 'Projektion av v på linjen', 'Linje med normalvektor', 'Normalvektor');
+hold off
+
+
+figure(2);
+hold on;
+plot([0, v(1)], [0, v(2)], 'b');
+plot([-1, 1], [-1, 1], 'k', 'LineWidth', 2);
+axis equal;
+grid on;
+title('Illustration av nollrummet');
+xlabel('x-axel');
+ylabel('y-axel');
+hold off
